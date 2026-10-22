@@ -1,0 +1,1 @@
+Developed 10 Sigma detection rules to identify common Windows security events, using Splunk and Sysmon to investigate activity, validate detections where telemetry was available, and document results and gaps.
