@@ -1,0 +1,18 @@
+title: Network Connection Visibility Baseline
+id: 6472f50b-3221-5638-9d46-b9b3b0ab678e
+status: test
+description: Provides visibility into Sysmon network-connection events; this broad rule requires tuning before it is used to identify suspicious traffic.
+author: Rohan Sharma
+date: 2026-10-20
+logsource:
+    product: windows
+    category: network_connection
+detection:
+    selection:
+        Initiated: 'true'
+    condition: selection
+falsepositives:
+    - Legitimate administrative activity and approved software behavior
+level: low
+tags:
+    - attack.command_and_control
