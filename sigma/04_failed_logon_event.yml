@@ -1,0 +1,19 @@
+title: Failed Windows Logon Event
+id: 9fcb7dab-6622-515f-8a06-0967aba86bd7
+status: test
+description: Detects a Windows failed logon event. Aggregate repeated events in the SIEM for brute-force detection.
+author: Rohan Sharma
+date: 2026-10-20
+logsource:
+    product: windows
+    category: authentication
+detection:
+    selection:
+        EventID: 4625
+    condition: selection
+falsepositives:
+    - Legitimate administrative activity and approved software behavior
+level: medium
+tags:
+    - attack.credential_access
+    - attack.t1110
