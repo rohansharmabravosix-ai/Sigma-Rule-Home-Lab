@@ -1,0 +1,26 @@
+title: Certutil Suspicious Arguments
+id: e3446391-831a-5b99-9ea5-15e870c4a104
+status: test
+description: Detects certutil command lines containing URL-cache or decoding switches.
+author: Rohan Sharma
+date: 2026-10-20
+logsource:
+    product: windows
+    category: process_creation
+detection:
+    selection_image:
+        Image|endswith: '\certutil.exe'
+    selection_args:
+        CommandLine|contains:
+            - ' -urlcache '
+            - ' -decode '
+            - ' -decodehex '
+    condition: selection_image and selection_args
+falsepositives:
+    - Legitimate administrative activity and approved software behavior
+level: medium
+tags:
+    - attack.command_and_control
+    - attack.t1105
+    - attack.defense_evasion
+    - attack.t1140
