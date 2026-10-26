@@ -1,0 +1,19 @@
+title: Process Access Visibility
+id: 068fc97e-3273-598e-85e1-6df84cf08e49
+status: test
+description: Provides visibility into Sysmon process-access events. Event ID 10 is not proof of process injection.
+author: Rohan Sharma
+date: 2026-10-20
+logsource:
+    product: windows
+    category: process_access
+detection:
+    selection:
+        EventID: 10
+    condition: selection
+falsepositives:
+    - Legitimate administrative activity and approved software behavior
+level: medium
+tags:
+    - attack.defense_evasion
+    - attack.t1055
