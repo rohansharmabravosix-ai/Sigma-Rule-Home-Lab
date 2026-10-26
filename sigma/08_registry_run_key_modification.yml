@@ -1,0 +1,21 @@
+title: Registry Run Key Modification
+id: b9267153-efee-5336-86f8-338aa13a4314
+status: test
+description: Detects registry value writes to common Run/RunOnce persistence locations.
+author: Rohan Sharma
+date: 2026-10-20
+logsource:
+    product: windows
+    category: registry_set
+detection:
+    selection:
+        TargetObject|contains:
+            - '\Software\Microsoft\Windows\CurrentVersion\Run'
+            - '\Software\Microsoft\Windows\CurrentVersion\RunOnce'
+    condition: selection
+falsepositives:
+    - Legitimate administrative activity and approved software behavior
+level: medium
+tags:
+    - attack.persistence
+    - attack.t1547.001
