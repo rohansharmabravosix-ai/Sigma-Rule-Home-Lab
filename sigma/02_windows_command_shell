@@ -1,0 +1,19 @@
+title: Windows Command Shell Execution
+id: ae153507-0266-5961-ae08-627cdae7f03e
+status: test
+description: Detects cmd.exe process creation for review.
+author: Rohan Sharma
+date: 2026-10-20
+logsource:
+    product: windows
+    category: process_creation
+detection:
+    selection:
+        Image|endswith: '\cmd.exe'
+    condition: selection
+falsepositives:
+    - Legitimate administrative activity and approved software behavior
+level: low
+tags:
+    - attack.execution
+    - attack.t1059.003
